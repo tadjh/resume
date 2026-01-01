@@ -21,8 +21,9 @@
 *.ilg
 *.ind
 
-# Output directory
-output/
+# Output directory (ignore everything except PDFs)
+output/*
+!output/*.pdf
 
 # PDF output (uncomment if you don't want to track PDFs)
 # *.pdf
