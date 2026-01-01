@@ -1,0 +1,41 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.pdfsync
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.idx
+*.ilg
+*.ind
+
+# Output directory
+output/
+
+# PDF output (uncomment if you don't want to track PDFs)
+# *.pdf
+
+# Editor backup files
+*~
+*.swp
+*.swo
+*_backup
+*.backup
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
