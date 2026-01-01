@@ -1,0 +1,68 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{core}[2026/01/01 Core helpers + guardrails]
+
+\RequirePackage{xparse}
+\RequirePackage{expl3}
+
+\ExplSyntaxOn
+
+% --- Error helpers ---
+\cs_new_protected:Npn \resume_error:nnn #1 #2 #3
+  { \PackageError{resume}{#1}{#2\par #3} }
+
+\cs_new_protected:Npn \resume_warn:nn #1 #2
+  { \PackageWarning{resume}{#1\par #2} }
+
+% --- Trim + emptiness check ---
+\cs_new:Npn \resume_trim:n #1 { \tl_trim_spaces:n {#1} }
+
+\cs_new_protected:Npn \resume_require_nonempty:nn #1 #2
+  {
+    \tl_set:Nn \l_tmpa_tl { \resume_trim:n {#2} }
+    \tl_if_blank:VTF \l_tmpa_tl
+      {
+        \resume_error:nnn
+          {Missing~required~field:~#1}
+          {A~required~argument~was~empty~or~whitespace.}
+          {Fix:~Provide~a~non-empty~value~for~#1.}
+      }
+      { }
+  }
+
+% Public wrapper
+\NewDocumentCommand{\ResumeRequireNonEmpty}{m m}
+  { \resume_require_nonempty:nn {#1}{#2} }
+
+% --- Lightweight date sanity (optional) ---
+% This is intentionally permissive. It flags obviously empty or suspicious patterns.
+\cs_new_protected:Npn \resume_warn_if_suspicious_date:nn #1 #2
+  {
+    \tl_set:Nn \l_tmpa_tl { \resume_trim:n {#2} }
+    \tl_if_blank:VTF \l_tmpa_tl
+      {
+        \resume_error:nnn
+          {Missing~required~field:~#1}
+          {Date~field~was~empty.}
+          {Fix:~Provide~a~date~range~like~2022--Present.}
+      }
+      {
+        % Warn if a single hyphen is used (common mistake) instead of -- in TeX
+        \tl_if_in:VnT \l_tmpa_tl {-}
+          {
+            \tl_if_in:VnF \l_tmpa_tl {--}
+              {
+                \resume_warn:nn
+                  {Possible~date~dash~issue~in~#1}
+                  {Use~two~hyphens~for~an~en-dash:~2022--Present.}
+              }
+          }
+      }
+  }
+
+\NewDocumentCommand{\ResumeWarnIfSuspiciousDate}{m m}
+  { \resume_warn_if_suspicious_date:nn {#1}{#2} }
+
+% --- Small utilities ---
+\NewDocumentCommand{\Sep}{}{\hspace{0.5em}\textbullet\hspace{0.5em}}
+
+\ExplSyntaxOff

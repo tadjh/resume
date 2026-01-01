@@ -1,0 +1,18 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{layout}[2026/01/01 Layout primitives]
+
+\RequirePackage{xparse}
+\RequirePackage{core}
+
+% Row: left content + right content on the same line
+\NewDocumentCommand{\Row}{m m}{
+  \ResumeRequireNonEmpty{Row:left}{#1}
+  \ResumeRequireNonEmpty{Row:right}{#2}
+  #1 \hfill #2\\
+}
+
+% Optional subline (italic), used under a row
+\NewDocumentCommand{\Subline}{m}{
+  \ResumeRequireNonEmpty{Subline}{#1}
+  \textit{#1}\\
+}
