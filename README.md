@@ -41,6 +41,14 @@ Rebuild (clean and build):
 make rebuild
 ```
 
+Watch for file changes and auto-rebuild:
+
+```bash
+make watch
+```
+
+This will automatically rebuild your resume whenever you save any `.tex` or `.sty` file. It uses polling mode (checks every 2 seconds). Press `Ctrl+C` to stop watching.
+
 Show all available commands:
 
 ```bash
