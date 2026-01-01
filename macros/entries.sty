@@ -1,0 +1,44 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{entries}[2026/01/01 Semantic resume entries]
+
+\RequirePackage{xparse}
+\RequirePackage{core}
+\RequirePackage{layout}
+
+% Entry: headline row + optional subline + body block
+% Args:
+% 1 left headline (bolded by caller or here)
+% 2 right headline (dates)
+% 3 optional subline
+% 4 body content (usually BulletList)
+\NewDocumentCommand{\Entry}{m m o m}{
+  \ResumeRequireNonEmpty{Entry:headline}{#1}
+  \ResumeRequireNonEmpty{Entry:dates}{#2}
+  \ResumeWarnIfSuspiciousDate{Entry:dates}{#2}
+
+  \Row{\textbf{#1}}{#2}
+  \IfValueT{#3}{\Subline{#3}}
+  #4
+  \vspace{0.4em}
+}
+
+% Project: name + right side (link/date), description line + body
+\NewDocumentCommand{\Project}{m m m m}{
+  \ResumeRequireNonEmpty{Project:name}{#1}
+  \ResumeRequireNonEmpty{Project:right}{#2}
+  \ResumeRequireNonEmpty{Project:desc}{#3}
+
+  \Row{\textbf{#1}}{#2}
+  #3\\
+  #4
+  \vspace{0.4em}
+}
+
+% Education: degree/school + dates, optional details line
+\NewDocumentCommand{\Education}{m m o}{
+  \ResumeRequireNonEmpty{Education:line}{#1}
+  \ResumeRequireNonEmpty{Education:dates}{#2}
+  \Row{\textbf{#1}}{#2}
+  \IfValueT{#3}{#3\\}
+  \vspace{0.2em}
+}

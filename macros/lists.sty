@@ -1,0 +1,26 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lists}[2026/01/01 List helpers]
+
+\RequirePackage{enumitem}
+\RequirePackage{xparse}
+\RequirePackage{core}
+
+% Tight bullet list defaults (resume-friendly)
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=*}
+
+% Bullet shorthand
+\NewDocumentCommand{\B}{}{\item}
+
+% A wrapper environment so section files read like data
+\NewDocumentEnvironment{BulletList}{+b}{
+  \begin{itemize}
+    #1
+  \end{itemize}
+}{}
+
+% Skills row without tables (ATS-safe)
+\NewDocumentCommand{\SkillRow}{m m}{
+  \ResumeRequireNonEmpty{SkillRow:label}{#1}
+  \ResumeRequireNonEmpty{SkillRow:value}{#2}
+  \textbf{#1:} #2\\
+}

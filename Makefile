@@ -32,7 +32,7 @@ all: $(PDF_FILE)
 # Build PDF from LaTeX source
 $(PDF_FILE): $(SOURCE_FILES) | $(OUTPUT_DIR)
 	@echo Building $(PDF_FILE) from $(TEX_FILE)...
-	$(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE)
+	TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE)
 	@if [ -f $(PDF_FILE) ]; then \
 		echo Build successful! $(PDF_FILE) created/updated.; \
 	else \
@@ -70,7 +70,7 @@ cleanall: clean
 # Note: PDF is not deleted, just overwritten, so editor tabs stay open
 rebuild: clean
 	@echo Building $(PDF_FILE) from $(TEX_FILE)...
-	$(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE)
+	TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE)
 	@if [ -f $(PDF_FILE) ]; then \
 		echo Build successful! $(PDF_FILE) created/updated.; \
 	else \
