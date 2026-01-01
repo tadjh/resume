@@ -24,7 +24,7 @@ AUX_FILES = *.aux *.log *.out *.toc *.lof *.lot *.fls *.fdb_latexmk \
             *.synctex.gz *.nav *.snm *.vrb *.bbl *.blg *.bcf *.run.xml \
             *.idx *.ilg *.ind
 
-.PHONY: all clean cleanall rebuild help
+.PHONY: all clean cleanall rebuild help watch
 
 # Default target: build the PDF
 all: $(PDF_FILE)
@@ -78,6 +78,21 @@ rebuild: clean
 		exit 1; \
 	fi
 
+# Watch for file changes and auto-rebuild (polling mode)
+watch:
+	@echo "Watching for file changes (checking every 2 seconds)..."
+	@echo "Press Ctrl+C to stop"
+	@LAST_BUILD=0; \
+	while true; do \
+		CURRENT=$$(find . -type f \( -name "*.tex" -o -name "*.sty" \) ! -path "./output/*" -exec stat -c %Y {} \; 2>/dev/null | sort -n | tail -1); \
+		if [ -n "$$CURRENT" ] && [ "$$CURRENT" != "$$LAST_BUILD" ]; then \
+			echo "File changed, rebuilding..."; \
+			$(MAKE) rebuild; \
+			LAST_BUILD=$$CURRENT; \
+		fi; \
+		sleep 2; \
+	done
+
 # Help target
 help:
 	@echo "Available targets:"
@@ -85,6 +100,7 @@ help:
 	@echo "  make clean  - Remove auxiliary files (keep PDF)"
 	@echo "  make cleanall - Remove all generated files including PDF"
 	@echo "  make rebuild - Clean auxiliary files and rebuild PDF (preserves open tabs)"
+	@echo "  make watch  - Watch for file changes and auto-rebuild (polling mode)"
 	@echo "  make help   - Show this help message"
 	@echo ""
 	@echo "Current branch: $(GIT_BRANCH)"
