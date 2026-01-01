@@ -2,6 +2,7 @@
 % ---------- Packages ----------
 \usepackage[letterpaper,margin=0.75in]{geometry} % for proper page layout
 \usepackage[T1]{fontenc} % for proper font encoding
+\usepackage{helvet} % for Helvetica font
 \usepackage[utf8]{inputenc} % for proper input encoding
 \usepackage{enumitem} % enables custom list styles
 \usepackage{titlesec} % enables custom section formatting
@@ -10,6 +11,7 @@
 \usepackage{resume} % custom resume macros
 
 % ---------- Formatting ----------
+\renewcommand{\familydefault}{\sfdefault} % for sans-serif font
 \setlength{\parindent}{0pt} % for no paragraph indentation
 \setlist[itemize]{noitemsep, topsep=2pt} % for custom list styles
 \titleformat{\section} % for custom section formatting

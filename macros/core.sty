@@ -63,6 +63,8 @@
   { \resume_warn_if_suspicious_date:nn {#1}{#2} }
 
 % --- Small utilities ---
-\NewDocumentCommand{\Sep}{}{\hspace{0.5em}\textbullet\hspace{0.5em}}
+\NewDocumentCommand{\Sep}{}{
+  \enspace|\enspace
+}
 
 \ExplSyntaxOff
