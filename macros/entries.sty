@@ -18,8 +18,7 @@
   \ResumeRequireNonEmpty{Entry:company}{#3}
   \Row{\textbf{#1}}{#2}
   \IfValueT{#3}{\Subline{#3}}
-  #4
-  \par
+  #4\par
 }
 
 % Project: name + right side (link/date), description line + body
@@ -27,11 +26,9 @@
   \ResumeRequireNonEmpty{Project:name}{#1}
   \ResumeRequireNonEmpty{Project:right}{#2}
   \ResumeRequireNonEmpty{Project:desc}{#3}
-
   \Row{\textbf{#1}}{#2}
-  #3\\
-  #4
-  \par
+  #3\par
+  #4\par
 }
 
 % Education: degree/school + dates, optional details line
@@ -42,6 +39,5 @@
   \ResumeRequireNonEmpty{Education:location}{#4}
   \Row{\textbf{#1}}{#2}
   #3\par
-  #4
-  \par
+  #4\par
 }
