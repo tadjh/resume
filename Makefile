@@ -25,12 +25,12 @@ RESUME_LOCATION ?=
 RESUME_PHONE ?=
 
 # Build LaTeX defines from environment variables (if set)
-LATEX_DEFINES = $(if $(RESUME_NAME),\def\resumenameenv{$(RESUME_NAME)}) \
-                $(if $(RESUME_TITLE),\def\resumetitleenv{$(RESUME_TITLE)}) \
-                $(if $(RESUME_EMAIL),\def\resumeemailenv{$(RESUME_EMAIL)}) \
-                $(if $(RESUME_WEBSITE),\def\resumewebsiteenv{$(RESUME_WEBSITE)}) \
-                $(if $(RESUME_LOCATION),\def\resumelocationenv{$(RESUME_LOCATION)}) \
-                $(if $(RESUME_PHONE),\def\resumephoneenv{$(RESUME_PHONE)})
+LATEX_DEFINES = $(if $(RESUME_NAME),\def\resumename{$(RESUME_NAME)}) \
+                $(if $(RESUME_TITLE),\def\resumetitle{$(RESUME_TITLE)}) \
+                $(if $(RESUME_EMAIL),\def\resumeemail{$(RESUME_EMAIL)}) \
+                $(if $(RESUME_WEBSITE),\def\resumewebsite{$(RESUME_WEBSITE)}) \
+                $(if $(RESUME_LOCATION),\def\resumelocation{$(RESUME_LOCATION)}) \
+                $(if $(RESUME_PHONE),\def\resumephone{$(RESUME_PHONE)})
 
 # Source files that the document depends on
 SECTION_FILES = $(wildcard sections/*.tex)
@@ -55,7 +55,7 @@ $(PDF_FILE): $(SOURCE_FILES) | $(OUTPUT_DIR)
 	else \
 		if [ -n "$(RESUME_NAME)" ] || [ -n "$(RESUME_EMAIL)" ]; then \
 			echo "Using environment variables for personal information..."; \
-			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) '\def\resumenameenv{$(RESUME_NAME)}\def\resumetitleenv{$(RESUME_TITLE)}\def\resumeemailenv{$(RESUME_EMAIL)}\def\resumewebsiteenv{$(RESUME_WEBSITE)}\def\resumelocationenv{$(RESUME_LOCATION)}\def\resumephoneenv{$(RESUME_PHONE)}\input{$(TEX_FILE)}'; \
+			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) '\def\resumename{$(RESUME_NAME)}\def\resumetitle{$(RESUME_TITLE)}\def\resumeemail{$(RESUME_EMAIL)}\def\resumewebsite{$(RESUME_WEBSITE)}\def\resumelocation{$(RESUME_LOCATION)}\def\resumephone{$(RESUME_PHONE)}\input{$(TEX_FILE)}'; \
 		else \
 			echo "Warning: personal.tex not found and no environment variables set."; \
 			echo "Create personal.tex from personal.tex.example or set RESUME_* environment variables."; \
@@ -103,7 +103,7 @@ rebuild: clean
 		TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE); \
 	else \
 		if [ -n "$(RESUME_NAME)" ] || [ -n "$(RESUME_EMAIL)" ]; then \
-			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) '\def\resumenameenv{$(RESUME_NAME)}\def\resumetitleenv{$(RESUME_TITLE)}\def\resumeemailenv{$(RESUME_EMAIL)}\def\resumewebsiteenv{$(RESUME_WEBSITE)}\def\resumelocationenv{$(RESUME_LOCATION)}\def\resumephoneenv{$(RESUME_PHONE)}\input{$(TEX_FILE)}'; \
+			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) '\def\resumename{$(RESUME_NAME)}\def\resumetitle{$(RESUME_TITLE)}\def\resumeemail{$(RESUME_EMAIL)}\def\resumewebsite{$(RESUME_WEBSITE)}\def\resumelocation{$(RESUME_LOCATION)}\def\resumephone{$(RESUME_PHONE)}\input{$(TEX_FILE)}'; \
 		else \
 			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE); \
 		fi; \

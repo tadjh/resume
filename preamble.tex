@@ -1,5 +1,6 @@
 % ---------- Packages ----------
-\usepackage[letterpaper,margin=0.75in, top=0.5in]{geometry} % for proper page layout
+\usepackage[letterpaper,margin=0.75in, top=0.5in]{geometry} % for
+% proper page layout
 \usepackage[T1]{fontenc} % for proper font encoding
 \usepackage{helvet} % for Helvetica font
 \usepackage[utf8]{inputenc} % for proper input encoding
@@ -14,31 +15,25 @@
 \setlength{\parindent}{0pt} % for no paragraph indentation
 \setlist[itemize]{noitemsep, topsep=2pt} % for custom list styles
 \titleformat{\section} % for custom section formatting
-  {\large\bfseries}
-  {}
-  {0em}
-  {}[\titlerule]
+{\large\bfseries}
+{}
+{0em}
+{}[\titlerule]
 \titlespacing*{\section}{0pt}{0.8em}{0.4em} % for custom section spacing
 
 % ---------- Personal Information ----------
 % Load personal information from personal.tex (gitignored)
-% If personal.tex doesn't exist, environment variables can be passed via Makefile
+% If personal.tex doesn't exist, environment variables can be passed
+% via Makefile
 % If neither exists, use fallback placeholder values
 \IfFileExists{personal.tex}{%
   \input{personal.tex}
 }{%
-  % Fallback: use environment variables if passed via Makefile, otherwise use defaults
-  % These are defined by the Makefile if RESUME_* environment variables are set
-  \providecommand{\resumenameenv}{Your Name}
-  \providecommand{\resumetitleenv}{Your Job Title}
-  \providecommand{\resumeemailenv}{your.email@example.com}
-  \providecommand{\resumewebsiteenv}{https://yourwebsite.com}
-  \providecommand{\resumelocationenv}{City, State}
-  \providecommand{\resumephoneenv}{+1 (XXX) XXX-XXXX}
-  \newcommand{\resumename}{\resumenameenv}
-  \newcommand{\resumetitle}{\resumetitleenv}
-  \newcommand{\resumeemail}{\resumeemailenv}
-  \newcommand{\resumewebsite}{\resumewebsiteenv}
-  \newcommand{\resumelocation}{\resumelocationenv}
-  \newcommand{\resumephone}{\resumephoneenv}
+  % Fallback defaults (only used if not already defined by Makefile)
+  \providecommand{\resumename}{Your Name}
+  \providecommand{\resumetitle}{Your Job Title}
+  \providecommand{\resumeemail}{your.email@example.com}
+  \providecommand{\resumewebsite}{https://yourwebsite.com}
+  \providecommand{\resumelocation}{City, State}
+  \providecommand{\resumephone}{+18005551234}
 }
