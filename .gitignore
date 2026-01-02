@@ -21,9 +21,8 @@
 *.ilg
 *.ind
 
-# Output directory (ignore everything except PDFs)
+# Output directory
 output/*
-!output/*.pdf
 
 # PDF output (uncomment if you don't want to track PDFs)
 # *.pdf
@@ -42,4 +41,3 @@ desktop.ini
 
 # Personal information (gitignored)
 personal.tex
-
