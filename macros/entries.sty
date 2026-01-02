@@ -35,10 +35,13 @@
 }
 
 % Education: degree/school + dates, optional details line
-\NewDocumentCommand{\Education}{m m o}{
-  \ResumeRequireNonEmpty{Education:line}{#1}
+\NewDocumentCommand{\Education}{m m m m o}{
+  \ResumeRequireNonEmpty{Education:degree}{#1}
   \ResumeRequireNonEmpty{Education:dates}{#2}
+  \ResumeRequireNonEmpty{Education:school}{#3}
+  \ResumeRequireNonEmpty{Education:location}{#4}
   \Row{\textbf{#1}}{#2}
-  \IfValueT{#3}{#3\\}
-  \vspace{0.2em}
+  #3, #4
+  \IfValueT{#5}{\\\hspace*{0.5em}#5}
+  \SpaceHalf
 }
