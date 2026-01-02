@@ -17,7 +17,47 @@
   \textit{#1}
 }
 
+% Spacing: formats spacing between elements
 \NewDocumentCommand{\SpaceHalf}{}{\vspace{0.5em}}
 \NewDocumentCommand{\Space}{}{\vspace{1em}}
-
 \NewDocumentCommand{\Indent}{}{\hspace*{1em}}
+
+% Name: formats resume name
+\NewDocumentCommand{\Name}{}{
+  {\Huge\textbf{\resumename}}
+  \par
+}
+
+% Job title: formats resume job title
+\NewDocumentCommand{\JobTitle}{}{
+  {\Large\resumetitle}
+  \par
+}
+
+% Email: formats email with mailto link
+\NewDocumentCommand{\Email}{}{
+  \href{mailto:\resumeemail}{\resumeemail}
+}
+
+% Website: formats website with href link
+\NewDocumentCommand{\Website}{}{
+  \href{\resumewebsite}{\resumewebsite}
+}
+
+% Location: formats location
+\NewDocumentCommand{\Location}{}{
+  \resumelocation
+}
+
+% Phone: formats phone with tel link
+\NewDocumentCommand{\Phone}{}{
+  \href{tel:\resumephone}{\resumephone}
+}
+
+% Contact: formats contact information
+\NewDocumentCommand{\Contact}{}{
+  \Email\Sep
+  \Website\Sep
+  \Location\Sep
+  \Phone\par
+}
