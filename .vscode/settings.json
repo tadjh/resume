@@ -1,0 +1,17 @@
+{
+  // 1) Never compile (prevents stepping on your Makefile watcher)
+  "latex-workshop.latex.autoBuild.run": "never",
+
+  // 2) Stop “build on save” behavior from any other triggers
+  "latex-workshop.latex.build.forceRecipeUsage": true,
+
+  // 3) Optional: silence build-related noise / commands
+  "latex-workshop.latex.tools": [],
+  "latex-workshop.latex.recipes": [],
+
+  // 4) Keep formatting enabled (you already have tex-fmt working)
+  "latex-workshop.formatting.latex": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.path": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.args": []
+}
+

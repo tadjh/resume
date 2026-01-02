@@ -89,6 +89,7 @@ Your personal information (name, title, email, etc.) is kept private and not com
 ### Option 1: Using `personal.tex` (Recommended)
 
 1. Copy the example file:
+
    ```bash
    cp personal.tex.example personal.tex
    ```
@@ -141,4 +142,73 @@ Example:
 % In resume.tex, after other sections:
 \input{sections/projects}
 ```
+
+## Formatting LaTeX Files
+
+This project uses `tex-fmt` for automatic LaTeX formatting with the LaTeX Workshop VSCode extension.
+
+**Note:** The [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) VSCode extension is required for formatting to work inside the IDE. Install it from the VSCode marketplace if you haven't already.
+
+### Installation
+
+**Prerequisites:** Install [Rust](https://www.rust-lang.org/tools/install) on your system.
+
+**For native Windows (Default):**
+
+1. Install Rust from https://www.rust-lang.org/tools/install
+2. Open PowerShell or Command Prompt
+3. Install `tex-fmt`:
+   ```bash
+   cargo install tex-fmt
+   ```
+
+**For Windows users using WSL:**
+
+1. Open WSL terminal
+2. Install Rust (if not already installed):
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+3. Install `tex-fmt`:
+   ```bash
+   cargo install tex-fmt
+   ```
+
+### Configuration
+
+The project is pre-configured to use `tex-fmt` with native Windows. The configuration is in `.vscode/settings.json`:
+
+```json
+{
+  "latex-workshop.formatting.latex": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.path": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.args": []
+}
+```
+
+**For WSL installation**, update `.vscode/settings.json` to:
+
+```json
+{
+  "latex-workshop.formatting.latex": "tex-fmt",
+  "latex-workshop.formatting.tex-fmt.path": "wsl",
+  "latex-workshop.formatting.tex-fmt.args": [
+    "bash",
+    "-lc",
+    "tex-fmt --nowrap \"$(wslpath '%TMPFILE%')\""
+  ]
+}
+```
+
+**Note:** Ensure that the directory containing the `tex-fmt` executable is in your system's `PATH` environment variable.
+
+### Usage
+
+Once configured, you can format your LaTeX files in VSCode:
+
+- **Format entire document**: Press `Shift+Alt+F` (or `Shift+Option+F` on macOS)
+- **Format selection**: Select text, right-click, and choose `Format Selection`
+- **Format on save**: Enable format on save in VSCode settings
+
+For more information, see the [LaTeX Workshop Formatting Documentation](https://github.com/James-Yu/LaTeX-Workshop/wiki/Format).
 
