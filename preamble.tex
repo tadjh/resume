@@ -22,12 +22,12 @@
 \titlespacing*{\section}{0pt}{0.8em}{0.4em} % for custom section spacing
 
 % ---------- Personal Information ----------
-% Load personal information from personal.tex (gitignored)
-% If personal.tex doesn't exist, environment variables can be passed
+% Load personal information from private.tex (gitignored)
+% If private.tex doesn't exist, environment variables can be passed
 % via Makefile
 % If neither exists, use fallback placeholder values
-\IfFileExists{personal.tex}{%
-  \input{personal.tex}
+\IfFileExists{private.tex}{%
+  \input{private.tex}
 }{%
   % Fallback defaults (only used if not already defined by Makefile)
   \providecommand{\resumename}{Your Name}

@@ -1,6 +1,6 @@
 % Personal Information Configuration
-% Copy this file to personal.tex and fill in your details
-% personal.tex is gitignored and will not be committed to the repository
+% Copy this file to private.tex and fill in your details
+% private.tex is gitignored and will not be committed to the repository
 
 \newcommand{\resumename}{Your Name}
 \newcommand{\resumetitle}{Your Job Title}

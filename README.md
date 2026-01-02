@@ -86,15 +86,15 @@ pdflatex resume.tex
 
 Your personal information (name, title, email, etc.) is kept private and not committed to the repository. You have two options:
 
-### Option 1: Using `personal.tex` (Recommended)
+### Option 1: Using `private.tex` (Recommended)
 
 1. Copy the example file:
 
    ```bash
-   cp personal.tex.example personal.tex
+   cp private.tex.example private.tex
    ```
 
-2. Edit `personal.tex` and fill in your personal information:
+2. Edit `private.tex` and fill in your personal information:
    ```latex
    \newcommand{\resumename}{Your Name}
    \newcommand{\resumetitle}{Your Job Title}
@@ -104,11 +104,11 @@ Your personal information (name, title, email, etc.) is kept private and not com
    \newcommand{\resumephone}{+1 (XXX) XXX-XXXX}
    ```
 
-The `personal.tex` file is gitignored and will not be committed to the repository.
+The `private.tex` file is gitignored and will not be committed to the repository.
 
 ### Option 2: Using Environment Variables
 
-You can also set environment variables instead of using `personal.tex`:
+You can also set environment variables instead of using `private.tex`:
 
 ```bash
 export RESUME_NAME="Your Name"
@@ -120,11 +120,11 @@ export RESUME_PHONE="+1 (XXX) XXX-XXXX"
 make
 ```
 
-**Note**: If `personal.tex` exists, it takes precedence over environment variables.
+**Note**: If `private.tex` exists, it takes precedence over environment variables.
 
 ## Customization
 
-1. Edit `personal.tex` (or set environment variables) to update your name and contact information
+1. Edit `private.tex` (or set environment variables) to update your name and contact information
 2. Edit `sections/experience.tex` to add/modify work experience
 3. Edit `sections/skills.tex` to update your skills
 4. Edit `sections/education.tex` to update education details

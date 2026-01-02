@@ -16,7 +16,7 @@ LATEX = pdflatex
 LATEX_FLAGS = -interaction=nonstopmode
 
 # Personal information from environment variables (optional)
-# If personal.tex exists, it takes precedence over these
+# If private.tex exists, it takes precedence over these
 RESUME_NAME ?=
 RESUME_TITLE ?=
 RESUME_EMAIL ?=
@@ -49,16 +49,16 @@ all: $(PDF_FILE)
 # Build PDF from LaTeX source
 $(PDF_FILE): $(SOURCE_FILES) | $(OUTPUT_DIR)
 	@echo Building $(PDF_FILE) from $(TEX_FILE)...
-	@if [ -f personal.tex ]; then \
-		echo "Using personal.tex for personal information..."; \
+	@if [ -f private.tex ]; then \
+		echo "Using private.tex for personal information..."; \
 		TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE); \
 	else \
 		if [ -n "$(RESUME_NAME)" ] || [ -n "$(RESUME_EMAIL)" ]; then \
 			echo "Using environment variables for personal information..."; \
 			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) '\def\resumename{$(RESUME_NAME)}\def\resumetitle{$(RESUME_TITLE)}\def\resumeemail{$(RESUME_EMAIL)}\def\resumewebsite{$(RESUME_WEBSITE)}\def\resumelocation{$(RESUME_LOCATION)}\def\resumephone{$(RESUME_PHONE)}\input{$(TEX_FILE)}'; \
 		else \
-			echo "Warning: personal.tex not found and no environment variables set."; \
-			echo "Create personal.tex from personal.tex.example or set RESUME_* environment variables."; \
+			echo "Warning: private.tex not found and no environment variables set."; \
+			echo "Create private.tex from private.tex.example or set RESUME_* environment variables."; \
 			TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE); \
 		fi; \
 	fi
@@ -99,7 +99,7 @@ cleanall: clean
 # Note: PDF is not deleted, just overwritten, so editor tabs stay open
 rebuild: clean
 	@echo Building $(PDF_FILE) from $(TEX_FILE)...
-	@if [ -f personal.tex ]; then \
+	@if [ -f private.tex ]; then \
 		TEXINPUTS=.:macros//:$(TEXINPUTS) $(LATEX) $(LATEX_FLAGS) -output-directory=$(OUTPUT_DIR) -jobname=$(MAIN)-$(GIT_BRANCH) $(TEX_FILE); \
 	else \
 		if [ -n "$(RESUME_NAME)" ] || [ -n "$(RESUME_EMAIL)" ]; then \
@@ -141,7 +141,7 @@ help:
 	@echo "  make help   - Show this help message"
 	@echo ""
 	@echo "Personal Information:"
-	@echo "  Option 1: Create personal.tex from personal.tex.example (recommended)"
+	@echo "  Option 1: Create private.tex from private.tex.example (recommended)"
 	@echo "  Option 2: Use environment variables:"
 	@echo "    RESUME_NAME, RESUME_TITLE, RESUME_EMAIL, RESUME_WEBSITE,"
 	@echo "    RESUME_LOCATION, RESUME_PHONE"
