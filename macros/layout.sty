@@ -3,6 +3,7 @@
 
 \RequirePackage{xparse}
 \RequirePackage{core}
+\RequirePackage{xstring}
 
 % Row: left content + right content on the same line
 \NewDocumentCommand{\Row}{m m}{
@@ -50,8 +51,13 @@
 }
 
 % Phone: formats phone with tel link
+% personal.tex should contain phone in format: +18005551234
+% Display format: +1 (800) 555-1234
 \NewDocumentCommand{\Phone}{}{
-  \href{tel:\resumephone}{\resumephone}
+  \StrMid{\resumephone}{2}{4}[\phonearea]%
+  \StrMid{\resumephone}{5}{7}[\phoneexchange]%
+  \StrMid{\resumephone}{8}{11}[\phonenumber]%
+  \href{tel:\resumephone}{+1~(\phonearea)~\phoneexchange-\phonenumber}%
 }
 
 % Contact: formats contact information
