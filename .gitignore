@@ -22,10 +22,10 @@
 *.ind
 
 # Output directory
-output/*
+/output
 
 # PDF output (uncomment if you don't want to track PDFs)
-# *.pdf
+*.pdf
 
 # Editor backup files
 *~
