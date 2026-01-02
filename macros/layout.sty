@@ -8,14 +8,16 @@
 \NewDocumentCommand{\Row}{m m}{
   \ResumeRequireNonEmpty{Row:left}{#1}
   \ResumeRequireNonEmpty{Row:right}{#2}
-  #1 \hfill #2\\
+  #1 \hfill #2\par
 }
 
 % Optional subline (italic), used under a row
 \NewDocumentCommand{\Subline}{m}{
   \ResumeRequireNonEmpty{Subline}{#1}
-  \textit{#1}\\
+  \textit{#1}
 }
 
 \NewDocumentCommand{\SpaceHalf}{}{\vspace{0.5em}}
 \NewDocumentCommand{\Space}{}{\vspace{1em}}
+
+\NewDocumentCommand{\Indent}{}{\hspace*{1em}}
