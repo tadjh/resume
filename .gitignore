@@ -40,3 +40,6 @@ output/*
 Thumbs.db
 desktop.ini
 
+# Personal information (gitignored)
+personal.tex
+

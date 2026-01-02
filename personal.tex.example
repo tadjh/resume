@@ -1,0 +1,11 @@
+% Personal Information Configuration
+% Copy this file to personal.tex and fill in your details
+% personal.tex is gitignored and will not be committed to the repository
+
+\newcommand{\resumename}{Your Name}
+\newcommand{\resumetitle}{Your Job Title}
+\newcommand{\resumeemail}{your.email@example.com}
+\newcommand{\resumewebsite}{https://yourwebsite.com}
+\newcommand{\resumelocation}{Your City, State}
+\newcommand{\resumephone}{+1 (XXX) XXX-XXXX}
+
