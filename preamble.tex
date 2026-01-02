@@ -1,3 +1,25 @@
+% ---------- Packages ----------
+\usepackage[letterpaper,margin=0.75in, top=0.5in]{geometry} % for proper page layout
+\usepackage[T1]{fontenc} % for proper font encoding
+\usepackage{helvet} % for Helvetica font
+\usepackage[utf8]{inputenc} % for proper input encoding
+\usepackage{enumitem} % enables custom list styles
+\usepackage{titlesec} % enables custom section formatting
+\usepackage[hidelinks]{hyperref} % enables hyperlinks in the PDF
+\usepackage{setspace} % enables custom line spacing
+\usepackage{resume} % custom resume macros
+
+% ---------- Formatting ----------
+\renewcommand{\familydefault}{\sfdefault} % for sans-serif font
+\setlength{\parindent}{0pt} % for no paragraph indentation
+\setlist[itemize]{noitemsep, topsep=2pt} % for custom list styles
+\titleformat{\section} % for custom section formatting
+  {\large\bfseries}
+  {}
+  {0em}
+  {}[\titlerule]
+\titlespacing*{\section}{0pt}{0.8em}{0.4em} % for custom section spacing
+
 % ---------- Personal Information ----------
 % Load personal information from personal.tex (gitignored)
 % If personal.tex doesn't exist, environment variables can be passed via Makefile
@@ -20,25 +42,3 @@
   \newcommand{\resumelocation}{\resumelocationenv}
   \newcommand{\resumephone}{\resumephoneenv}
 }
-
-% ---------- Packages ----------
-\usepackage[letterpaper,margin=0.75in, top=0.5in]{geometry} % for proper page layout
-\usepackage[T1]{fontenc} % for proper font encoding
-\usepackage{helvet} % for Helvetica font
-\usepackage[utf8]{inputenc} % for proper input encoding
-\usepackage{enumitem} % enables custom list styles
-\usepackage{titlesec} % enables custom section formatting
-\usepackage[hidelinks]{hyperref} % enables hyperlinks in the PDF
-\usepackage{setspace} % enables custom line spacing
-\usepackage{resume} % custom resume macros
-
-% ---------- Formatting ----------
-\renewcommand{\familydefault}{\sfdefault} % for sans-serif font
-\setlength{\parindent}{0pt} % for no paragraph indentation
-\setlist[itemize]{noitemsep, topsep=2pt} % for custom list styles
-\titleformat{\section} % for custom section formatting
-  {\large\bfseries}
-  {}
-  {0em}
-  {}[\titlerule]
-\titlespacing*{\section}{0pt}{0.8em}{0.4em} % for custom section spacing
