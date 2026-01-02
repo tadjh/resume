@@ -15,11 +15,11 @@
   \ResumeRequireNonEmpty{Entry:headline}{#1}
   \ResumeRequireNonEmpty{Entry:dates}{#2}
   \ResumeWarnIfSuspiciousDate{Entry:dates}{#2}
-
+  \ResumeRequireNonEmpty{Entry:company}{#3}
   \Row{\textbf{#1}}{#2}
   \IfValueT{#3}{\Subline{#3}}
   #4
-  \vspace{0.4em}
+  \SpaceHalf
 }
 
 % Project: name + right side (link/date), description line + body
@@ -31,17 +31,17 @@
   \Row{\textbf{#1}}{#2}
   #3\\
   #4
-  \vspace{0.4em}
+  \SpaceHalf
 }
 
 % Education: degree/school + dates, optional details line
-\NewDocumentCommand{\Education}{m m m m o}{
+\NewDocumentCommand{\Education}{m m m m}{
   \ResumeRequireNonEmpty{Education:degree}{#1}
   \ResumeRequireNonEmpty{Education:dates}{#2}
   \ResumeRequireNonEmpty{Education:school}{#3}
   \ResumeRequireNonEmpty{Education:location}{#4}
   \Row{\textbf{#1}}{#2}
-  #3, #4
-  \IfValueT{#5}{\\\hspace*{0.5em}#5}
+  #3\par
+  #4
   \SpaceHalf
 }
