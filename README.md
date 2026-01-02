@@ -82,9 +82,48 @@ pdflatex resume.tex
 
 - **TeX Live** (Cross-platform): https://www.tug.org/texlive/
 
+## Personal Information Setup
+
+Your personal information (name, title, email, etc.) is kept private and not committed to the repository. You have two options:
+
+### Option 1: Using `personal.tex` (Recommended)
+
+1. Copy the example file:
+   ```bash
+   cp personal.tex.example personal.tex
+   ```
+
+2. Edit `personal.tex` and fill in your personal information:
+   ```latex
+   \newcommand{\resumename}{Your Name}
+   \newcommand{\resumetitle}{Your Job Title}
+   \newcommand{\resumeemail}{your.email@example.com}
+   \newcommand{\resumewebsite}{https://yourwebsite.com}
+   \newcommand{\resumelocation}{Your City, State}
+   \newcommand{\resumephone}{+1 (XXX) XXX-XXXX}
+   ```
+
+The `personal.tex` file is gitignored and will not be committed to the repository.
+
+### Option 2: Using Environment Variables
+
+You can also set environment variables instead of using `personal.tex`:
+
+```bash
+export RESUME_NAME="Your Name"
+export RESUME_TITLE="Your Job Title"
+export RESUME_EMAIL="your.email@example.com"
+export RESUME_WEBSITE="https://yourwebsite.com"
+export RESUME_LOCATION="Your City, State"
+export RESUME_PHONE="+1 (XXX) XXX-XXXX"
+make
+```
+
+**Note**: If `personal.tex` exists, it takes precedence over environment variables.
+
 ## Customization
 
-1. Edit `sections/header.tex` to update your name and contact information
+1. Edit `personal.tex` (or set environment variables) to update your name and contact information
 2. Edit `sections/experience.tex` to add/modify work experience
 3. Edit `sections/skills.tex` to update your skills
 4. Edit `sections/education.tex` to update education details
