@@ -20,3 +20,11 @@
   \IfValueT{#3}{#3\par}
   #4\par
 }
+
+
+\NewDocumentCommand{\Skill}{m m}{
+  \ResumeRequireNonEmpty{Skill:title}{#1}
+  \ResumeRequireNonEmpty{Skill:description}{#2}
+  \textbf{#1} -- {#2}\par
+  \SpaceHalf
+}
