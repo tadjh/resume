@@ -21,6 +21,13 @@
   #4\par
 }
 
+\NewDocumentCommand{\Project}{m m}{
+  \ResumeRequireNonEmpty{Project:title}{#1}
+  \ResumeRequireNonEmpty{Project:description}{#2}
+  \textbf{#1}\par
+  #2\par
+}
+
 
 \NewDocumentCommand{\Skill}{m m}{
   \ResumeRequireNonEmpty{Skill:title}{#1}

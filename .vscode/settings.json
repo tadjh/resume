@@ -12,5 +12,5 @@
   // 4) Keep formatting enabled (you already have tex-fmt working)
   "latex-workshop.formatting.latex": "tex-fmt",
   "latex-workshop.formatting.tex-fmt.path": "tex-fmt",
-  "latex-workshop.formatting.tex-fmt.args": []
+  "latex-workshop.formatting.tex-fmt.args": ["--nowrap"]
 }
