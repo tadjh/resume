@@ -52,18 +52,18 @@
 
 % Phone: formats phone with tel link
 % private.tex should contain phone in format: +18005551234
-% Display format: +1 (800) 555-1234
+% Display format: 1 (800) 555-1234
 \NewDocumentCommand{\Phone}{}{
-  \StrMid{\resumephone}{2}{4}[\phonearea]%
-  \StrMid{\resumephone}{5}{7}[\phoneexchange]%
-  \StrMid{\resumephone}{8}{11}[\phonenumber]%
-  \href{tel:\resumephone}{+1~(\phonearea)~\phoneexchange-\phonenumber}%
+  \StrMid{\resumephone}{3}{5}[\phonearea]%
+  \StrMid{\resumephone}{6}{8}[\phoneexchange]%
+  \StrMid{\resumephone}{9}{12}[\phonenumber]%
+  \href{tel:\resumephone}{1~(\phonearea)~\phoneexchange-\phonenumber}%
 }
 
 % Contact: formats contact information
 \NewDocumentCommand{\Contact}{}{
   \Email\Sep
   \Website\Sep
-  \Location\Sep
+  % \Location\Sep
   \Phone\par
 }

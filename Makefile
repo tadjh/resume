@@ -120,8 +120,14 @@ watch:
 	@echo "Watching for file changes (checking every 2 seconds)..."
 	@echo "Press Ctrl+C to stop"
 	@LAST_BUILD=0; \
+	UNAME_S=$$(uname -s); \
+	if [ "$$UNAME_S" = "Darwin" ]; then \
+		STAT_CMD="stat -f %m"; \
+	else \
+		STAT_CMD="stat -c %Y"; \
+	fi; \
 	while true; do \
-		CURRENT=$$(find . -type f \( -name "*.tex" -o -name "*.sty" \) ! -path "./output/*" -exec stat -c %Y {} \; 2>/dev/null | sort -n | tail -1); \
+		CURRENT=$$(find . -type f \( -name "*.tex" -o -name "*.sty" \) ! -path "./output/*" -exec $$STAT_CMD {} \; 2>/dev/null | sort -n | tail -1); \
 		if [ -n "$$CURRENT" ] && [ "$$CURRENT" != "$$LAST_BUILD" ]; then \
 			echo "File changed, rebuilding..."; \
 			$(MAKE) rebuild; \

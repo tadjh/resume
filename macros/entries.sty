@@ -12,32 +12,26 @@
 % 3 optional subline
 % 4 body content (usually BulletList)
 \NewDocumentCommand{\Entry}{m m o m}{
-  \ResumeRequireNonEmpty{Entry:headline}{#1}
-  \ResumeRequireNonEmpty{Entry:dates}{#2}
-  \ResumeWarnIfSuspiciousDate{Entry:dates}{#2}
-  \ResumeRequireNonEmpty{Entry:company}{#3}
+  \ResumeRequireNonEmpty{Entry:left}{#1}
+  \ResumeRequireNonEmpty{Entry:right}{#2}
+  \ResumeWarnIfSuspiciousDate{Entry:right}{#2}
+  \ResumeRequireNonEmpty{Entry:subline}{#3}
   \Row{\textbf{#1}}{#2}
-  \IfValueT{#3}{\Subline{#3}}
+  \IfValueT{#3}{#3\par}
   #4\par
 }
 
-% Project: name + right side (link/date), description line + body
-\NewDocumentCommand{\Project}{m m m m}{
-  \ResumeRequireNonEmpty{Project:name}{#1}
-  \ResumeRequireNonEmpty{Project:right}{#2}
-  \ResumeRequireNonEmpty{Project:desc}{#3}
-  \Row{\textbf{#1}}{#2}
-  #3\par
-  #4\par
+\NewDocumentCommand{\Project}{m m}{
+  \ResumeRequireNonEmpty{Project:title}{#1}
+  \ResumeRequireNonEmpty{Project:description}{#2}
+  \textbf{#1}\par
+  #2\par
 }
 
-% Education: degree/school + dates, optional details line
-\NewDocumentCommand{\Education}{m m m m}{
-  \ResumeRequireNonEmpty{Education:degree}{#1}
-  \ResumeRequireNonEmpty{Education:dates}{#2}
-  \ResumeRequireNonEmpty{Education:school}{#3}
-  \ResumeRequireNonEmpty{Education:location}{#4}
-  \Row{\textbf{#1}}{#2}
-  #3\par
-  #4\par
+
+\NewDocumentCommand{\Skill}{m m}{
+  \ResumeRequireNonEmpty{Skill:title}{#1}
+  \ResumeRequireNonEmpty{Skill:description}{#2}
+  \textbf{#1} -- {#2}\par
+  \SpaceHalf
 }
